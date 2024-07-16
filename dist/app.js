@@ -1,0 +1,23 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var express_1 = __importDefault(require("express"));
+var body_parser_1 = __importDefault(require("body-parser"));
+var app = (0, express_1.default)();
+app.use(body_parser_1.default.json());
+var AddMoverMagic_Router_1 = __importDefault(require("./router/AddMoverMagic.Router"));
+var AddMagicItem_Router_1 = __importDefault(require("./router/AddMagicItem.Router"));
+var LoadMagicMover_Router_1 = __importDefault(require("./router/LoadMagicMover.Router"));
+var StartMission_Roter_1 = __importDefault(require("./router/StartMission.Roter"));
+var EndMission_Router_1 = __importDefault(require("./router/EndMission.Router"));
+var CompletedMission_Router_1 = __importDefault(require("./router/CompletedMission.Router"));
+app.use('/addmagicmover', AddMoverMagic_Router_1.default);
+app.use('/addmagicitem', AddMagicItem_Router_1.default);
+app.use('/loadmagicmover', LoadMagicMover_Router_1.default);
+app.use('/startmission', StartMission_Roter_1.default);
+app.use('/endmission', EndMission_Router_1.default);
+app.use('/completedmisiion', CompletedMission_Router_1.default);
+var Port = 5000;
+app.listen(Port, function () { console.log("listening on port number ".concat(Port)); });
